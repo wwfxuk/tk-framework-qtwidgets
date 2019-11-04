@@ -504,7 +504,6 @@ class ContextWidget(QtGui.QWidget):
         func = partial(run_on_context_activated, context)
         action.triggered.connect(func)
 
-
         return action
 
     def _get_recent_contexts(self):

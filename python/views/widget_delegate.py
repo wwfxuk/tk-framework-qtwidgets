@@ -255,14 +255,18 @@ class WidgetDelegate(QtGui.QStyledItemDelegate):
             if USING_PYQT:
                 # pyqt is using the flags parameter, which seems inconsistent with QT
                 # http://pyqt.sourceforge.net/Docs/PyQt4/qwidget.html#render
-                paint_widget.render(painter,
-                                          QtCore.QPoint(0,0),
-                                          QtGui.QRegion(),
-                                          QtGui.QWidget.DrawChildren)
+                paint_widget.render(
+                    painter,
+                    QtCore.QPoint(0,0),
+                    QtGui.QRegion(),
+                    QtGui.QWidget.DrawChildren
+                )
             else:
                 # pyside is using the renderFlags parameter which seems correct
-                paint_widget.render(painter,
-                                          QtCore.QPoint(0,0),
-                                          renderFlags=QtGui.QWidget.DrawChildren)
+                paint_widget.render(
+                    painter,
+                    QtCore.QPoint(0,0),
+                    renderFlags=QtGui.QWidget.DrawChildren
+                )
         finally:
             painter.restore()

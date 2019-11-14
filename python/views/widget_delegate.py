@@ -16,6 +16,7 @@ from sgtk.platform.qt import QtCore, QtGui
 USING_PYQT = not hasattr(QtCore, "ClassInfo")  # Only PySide has ClassInfo
 
 
+
 class WidgetDelegate(QtGui.QStyledItemDelegate):
     """
     Convenience wrapper that makes it straight forward to use widgets inside of delegates.
@@ -43,6 +44,7 @@ class WidgetDelegate(QtGui.QStyledItemDelegate):
               and :meth:`_create_editor_widget()` methods.
 
     """
+
     def __init__(self, view):
         """
         :param view: The parent view for this delegate
@@ -190,7 +192,9 @@ class WidgetDelegate(QtGui.QStyledItemDelegate):
                                 index
         """
         # allow derived class to create the editor widget:
-        editor_widget = self._create_editor_widget(model_index, style_options, parent_widget)
+        editor_widget = self._create_editor_widget(
+            model_index, style_options, parent_widget
+        )
         if not editor_widget:
             return None
 
@@ -262,6 +266,3 @@ class WidgetDelegate(QtGui.QStyledItemDelegate):
                                           renderFlags=QtGui.QWidget.DrawChildren)
         finally:
             painter.restore()
-
-
-

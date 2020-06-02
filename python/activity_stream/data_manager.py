@@ -464,39 +464,42 @@ class ActivityStreamDataHandler(QtCore.QObject):
             if entity.get("user.HumanUser.image") and self._sg_data_retriever:
                 uid = self._sg_data_retriever.request_thumbnail(
                     entity["user.HumanUser.image"],
-                    entity["user"]["id"],
                     entity["user"]["type"],
+                    entity["user"]["id"],
                     "image",
                     load_image=True,
                 )
                 self._thumb_map[uid] = {
                     "activity_id": activity_id,
+                    "entity": entity,
                     "thumbnail_type": self.THUMBNAIL_CREATED_BY,
                 }
 
             elif entity.get("user.ClientUser.image") and self._sg_data_retriever:
                 uid = self._sg_data_retriever.request_thumbnail(
                     entity["user.ClientUser.image"],
-                    entity["user"]["id"],
                     entity["user"]["type"],
+                    entity["user"]["id"],
                     "image",
                     load_image=True,
                 )
                 self._thumb_map[uid] = {
                     "activity_id": activity_id,
+                    "entity": entity,
                     "thumbnail_type": self.THUMBNAIL_CREATED_BY,
                 }
 
             elif entity.get("user.ApiUser.image") and self._sg_data_retriever:
                 uid = self._sg_data_retriever.request_thumbnail(
                     entity["user.ApiUser.image"],
-                    entity["user"]["id"],
                     entity["user"]["type"],
+                    entity["user"]["id"],
                     "image",
                     load_image=True,
                 )
                 self._thumb_map[uid] = {
                     "activity_id": activity_id,
+                    "entity": entity,
                     "thumbnail_type": self.THUMBNAIL_CREATED_BY,
                 }
 
@@ -515,6 +518,7 @@ class ActivityStreamDataHandler(QtCore.QObject):
             )
             self._thumb_map[uid] = {
                 "activity_id": activity_id,
+                "entity": entity,
                 "thumbnail_type": self.THUMBNAIL_CREATED_BY,
             }
 
@@ -526,6 +530,7 @@ class ActivityStreamDataHandler(QtCore.QObject):
             )
             self._thumb_map[uid] = {
                 "activity_id": activity_id,
+                "entity": entity,
                 "thumbnail_type": self.THUMBNAIL_ENTITY,
             }
 
